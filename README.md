@@ -26,21 +26,21 @@ CREATE INDEX idx_product ON dbo.sales_data_sample(PRODUCTLINE);
 CREATE INDEX idx_customer ON dbo.sales_data_sample(CUSTOMERNAME);
 
 ### Business Analysis Queries
-## Top-Performing Products
+# Top-Performing Products
 SQL
 SELECT TOP 5 PRODUCTCODE, SUM(SALES) AS TotalRevenue
 FROM dbo.sales_data_sample
 GROUP BY PRODUCTCODE
 ORDER BY TotalRevenue DESC;
 
-## Revenue Trends
+# Revenue Trends
 SQL
 SELECT YEAR_ID, QTR_ID, MONTH_ID, SUM(SALES) AS TotalRevenue
 FROM dbo.sales_data_sample
 GROUP BY YEAR_ID, QTR_ID, MONTH_ID
 ORDER BY YEAR_ID, QTR_ID, MONTH_ID;
 
-## Customer Purchasing Behavior
+# Customer Purchasing Behavior
 SQL
 SELECT CUSTOMERNAME, COUNT(ORDERNUMBER) AS Frequency, AVG(SALES) AS AvgOrderValue
 FROM dbo.sales_data_sample
@@ -48,13 +48,13 @@ GROUP BY CUSTOMERNAME
 HAVING AVG(SALES) > 500000
 ORDER BY Frequency DESC;
 
-## Orders Above Global Average (Subquery)
+# Orders Above Global Average (Subquery)
 SQL
 SELECT ORDERNUMBER, SALES
 FROM dbo.sales_data_sample
 WHERE SALES > (SELECT AVG(SALES) FROM dbo.sales_data_sample);
 
-## Ranking Sales (Window Function)
+# Ranking Sales (Window Function)
 SQL
 SELECT PRODUCTLINE, SALES, RANK() OVER (PARTITION BY PRODUCTLINE ORDER BY SALES DESC) AS SalesRank
 FROM dbo.sales_data_sample;
@@ -62,9 +62,9 @@ FROM dbo.sales_data_sample;
 ### Business Insights
 - **Concentrated Revenue: A small percentage of products drive the majority of revenue.
 
-# High-Value Customer Segment: By filtering for VIP clients, we can create targeted loyalty programs.
+- **High-Value Customer Segment: By filtering for VIP clients, we can create targeted loyalty programs.
 
-# Performance Outliers: The subquery analysis helped us isolate high-performing orders, providing a roadmap for future sales success.
+- **Performance Outliers: The subquery analysis helped us isolate high-performing orders, providing a roadmap for future sales success.
 
 # AnalystLab Africa - Week 3 Project: Chinook Database Analysis
 
@@ -80,13 +80,13 @@ This repository contains my final SQL analysis project for the AnalystLab Africa
 ## SQL Analysis Highlights
 
 ### 1. Data Preview
-## Understanding the table structure
+# Understanding the table structure
 SELECT TOP 5 * FROM dbo.Customer;
 SELECT TOP 5 * FROM dbo.Invoice;
 
 ### 2. Business Aggregates
 SQL
-## Calculating total revenue per country
+# Calculating total revenue per country
 SELECT BillingCountry, SUM(Total) AS RevenuePerCountry
 FROM dbo.Invoice
 GROUP BY BillingCountry
@@ -94,18 +94,18 @@ ORDER BY RevenuePerCountry DESC;
 
 ### 3. Query Optimization
 SQL
-## Speeding up searches with non-clustered indexes
+# Speeding up searches with non-clustered indexes
 CREATE NONCLUSTERED INDEX IX_Invoice_Total ON dbo.Invoice(Total);
 
 ### 4. Insights
-# Customer Behavior: Identified high-value customers through transaction volume.
+- **Customer Behavior: Identified high-value customers through transaction volume.
 
-# Product Trends: Discovered top-performing tracks through invoice join analysis.
+- **Product Trends: Discovered top-performing tracks through invoice join analysis.
 
-# Performance: Optimized query execution times using SQL indexing, significantly reducing retrieval time for large datasets.
+- **Performance: Optimized query execution times using SQL indexing, significantly reducing retrieval time for large datasets.
 
 ## About
-# This project was completed as part of the AnalystLab Africa data analytics curriculum.
+ This project was completed as part of the AnalystLab Africa data analytics curriculum.
 
 ### Created by: Okoli Udoka Shalom
 #SQL #AnalystlabAfrica #DataAnalytics #Internship #SQLServer #BusinessIntelligence
