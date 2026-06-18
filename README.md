@@ -54,7 +54,7 @@ SELECT ORDERNUMBER, SALES
 FROM dbo.sales_data_sample
 WHERE SALES > (SELECT AVG(SALES) FROM dbo.sales_data_sample);
 
-# Ranking Sales (Window Function)
+### Ranking Sales (Window Function)
 SQL
 SELECT PRODUCTLINE, SALES, RANK() OVER (PARTITION BY PRODUCTLINE ORDER BY SALES DESC) AS SalesRank
 FROM dbo.sales_data_sample;
@@ -80,7 +80,7 @@ This repository contains my final SQL analysis project for the AnalystLab Africa
 ## SQL Analysis Highlights
 
 ### 1. Data Preview
-# Understanding the table structure
+### Understanding the table structure
 SELECT TOP 5 * FROM dbo.Customer;
 SELECT TOP 5 * FROM dbo.Invoice;
 
