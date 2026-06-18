@@ -60,11 +60,11 @@ SELECT PRODUCTLINE, SALES, RANK() OVER (PARTITION BY PRODUCTLINE ORDER BY SALES 
 FROM dbo.sales_data_sample;
 
 ### Business Insights
-## Concentrated Revenue: A small percentage of products drive the majority of revenue.
+- **Concentrated Revenue: A small percentage of products drive the majority of revenue.
 
-## High-Value Customer Segment: By filtering for VIP clients, we can create targeted loyalty programs.
+# High-Value Customer Segment: By filtering for VIP clients, we can create targeted loyalty programs.
 
-## Performance Outliers: The subquery analysis helped us isolate high-performing orders, providing a roadmap for future sales success.
+# Performance Outliers: The subquery analysis helped us isolate high-performing orders, providing a roadmap for future sales success.
 
 # AnalystLab Africa - Week 3 Project: Chinook Database Analysis
 
