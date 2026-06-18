@@ -86,7 +86,7 @@ SELECT TOP 5 * FROM dbo.Invoice;
 
 ### 2. Business Aggregates
 SQL
-# Calculating total revenue per country
+### Calculating total revenue per country
 SELECT BillingCountry, SUM(Total) AS RevenuePerCountry
 FROM dbo.Invoice
 GROUP BY BillingCountry
@@ -94,7 +94,7 @@ ORDER BY RevenuePerCountry DESC;
 
 ### 3. Query Optimization
 SQL
-# Speeding up searches with non-clustered indexes
+### Speeding up searches with non-clustered indexes
 CREATE NONCLUSTERED INDEX IX_Invoice_Total ON dbo.Invoice(Total);
 
 ### 4. Insights
